@@ -1,0 +1,24 @@
+{% macro input(label="",type="text",placeholder="",name="",id="") -%}
+<div class="form-group"><label for="{{id}}">{{label}}</label>
+      <input type="{{type}}" class="form-control" name="{{name}}" placeholder="{{placeholder}}" id="{{id}}">
+
+</div>
+{%- endmacro %}
+{% macro textarea(label="",type="text",placeholder="",name="",id="") -%}
+<div class="form-group"><label for="{{id}}">{{label}}</label>
+      <textarea name="{{name}}" class="form-control" id="{{id}}" cols="30" rows="10">{{placeholder}}</textarea>
+
+</div>
+{%- endmacro %}
+
+{% macro button(value="",id="",onclick="#",type="button") -%}
+<button class="btn btn-dark" id="{{id}}" onclick="{{onclick}}" type="{{type}}">{{value}}</button>
+{%- endmacro %}
+{% macro file(type="file",id="",name="",label="") -%}
+
+<div class="form-group">
+<label for="{{id}}" >{{label}}</label>
+<div class="custom-file">
+<input type="file" name="{{name}}" id="{{id}}" class="custom-file-input" >
+<label for="{{id}}" class = "custom-file-label">select {{name}} ...</label></div></div>
+{%- endmacro %}

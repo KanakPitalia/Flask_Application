@@ -1,0 +1,50 @@
+{% extends "public/templates/public_template.html" %}
+{% import "macros/input_macros.html" as im %}
+
+{% block title %}Jinja{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Jinja</h1>
+      <hr>
+      <h4>Accessing an objects value</h4>
+      <br>
+      <p>Hello {{my_name}}!</p>
+      <hr>
+      <h4>Accessing List</h4>
+      <br>
+      <strong class="d-block mb-3">Programming languages</strong>
+      <p>
+      <ul>{% for i in langs %}
+        
+        <li>{{i}}</li>
+
+      
+
+        {% endfor %}
+      </ul>
+      </p>
+      <hr>
+      <h4>Today's Date & Time</h4>
+      <p>{{date}}</p>
+      <hr>
+      <h4>Macros</h4>
+      
+
+      <form action="#" method="POST">
+
+
+
+        {{im.input(label="Name",placeholder="Enter Your Name",name="name",id="name")}}
+        {{im.input(label="Email",type="email",placeholder="Enter Your Email",name="email",id="email")}}
+        {{im.input(label="Password",type="Password",placeholder="Enter Your Password",name="password",id="password")}}
+        {{im.input(type="submit")}}
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

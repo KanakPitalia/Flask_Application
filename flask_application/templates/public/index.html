@@ -1,0 +1,312 @@
+<!-- <!DOCTYPE Html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        html {
+            overflow-y: scroll;
+        }
+
+        body {
+            background: url(/static/4.jpg);
+            background-size: auto;
+        }
+
+        .sign-up,
+        .login {
+            position: absolute;
+            top: 700px;
+            /* animation: typingAnim 5s steps(50); */
+
+        }
+
+        .box {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 550px;
+            opacity: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+
+        }
+
+        .box .take {
+            position: relative;
+            margin-top: 15px;
+            margin-left: 30px;
+            letter-spacing: 0.9px;
+            margin-right: 0px;
+
+        }
+
+        .box .take1 {
+            position: relative;
+            margin-top: 15px;
+            letter-spacing: 0.7px;
+            margin-left: 25px;
+            margin-right: 0px;
+        }
+
+        .box .take input {
+            width: 360px;
+            padding: 10px 0px;
+            color: yellow;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: 2px solid darkblue;
+
+        }
+
+        .box .take label {
+            position: absolute;
+            color: orange;
+            font-weight: bold;
+            top: 0px;
+            left: 0px;
+            padding: 10px;
+            font-size: 16px;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .box .take input:focus~label,
+        .box .take input:valid~label {
+            top: -20px;
+            left: -10px;
+            font-size: 12px;
+            color: aqua;
+            font-weight: bold;
+            /* animation: typingAnim 5s steps(50); */
+
+        }
+
+        .box .submit input {
+            position: center;
+            margin: 15px 50px;
+            height: 50px;
+            width: 100px;
+            padding: 5px;
+            border-radius: 10px;
+            letter-spacing: 2px;
+            color: aqua;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background: blue;
+            box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        div input[id="login"],
+        div input[id="sign-up"] {
+            opacity: 0;
+            /* animation: typingAnim 5s steps(50); */
+
+
+        }
+
+        div input[id="login"] {
+            left: 5px;
+        }
+
+        div input[id="sign-up"] {
+            left: 20px;
+        }
+
+        .labels {
+
+            display: flex;
+            justify-content: space-around;
+            margin-top: -17px;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 0px;
+        }
+
+        #sign,
+        #log {
+            width: 200px;
+            cursor: pointer;
+            display: inline-block;
+            background-color: lavenderblush;
+            color: black;
+            text-align: center;
+            border-radius: 30px;
+            /* animation: typingAnim 5s steps(50); */
+
+        }
+
+        div input[id="login"]:checked~.labels #sign,
+        div input[id="sign-up"]:checked~.labels #log {
+            background-color: rgba(0, 0, 0, .2);
+            opacity: 0.4;
+            transition: .2s;
+            /* animation: typingAnim 5s steps(50); */
+
+
+        }
+
+        div input[id="login"]:checked~form.login,
+        div input[id="sign-up"]:checked~form.sign-up {
+            z-index: 10000000;
+            top: 120px;
+            transition: .5s;
+            /* animation: typingAnim 5s steps(50); */
+        }
+
+        @keyframes typingAnim {
+            from {
+                width: 0;
+                color: rgb(108, 27, 189);
+                /* text-align: center; */
+
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+         <form action="/data" method="POST"> -->
+        <!-- <form>
+            <input type="radio" name="login" id="login">
+            <input type="radio" name="login" id="sign-up" checked> -->
+        <!-- <div class="labels">
+                <label for='login' id="log">
+                    <h1>LOGIN</h1>
+                </label>
+                <label for='sign-up' id="sign">
+                    <h1>SIGN-UP</h1>
+                </label>
+
+            </div> 
+        <div class=""><input type="radio" name="login" id="login">
+            <input type="radio" name="login" id="sign-up" checked>
+            <div class="labels">
+                <label for='login' id="log">
+                    <h1>LOGIN</h1>
+                </label>
+                <label for='sign-up' id="sign">
+                    <h1>SIGN-UP</h1>
+                </label>
+
+            </div>
+
+            <form action="/store" method="POST" class="sign-up">
+                <div class="take">
+                    <input type="text" name="Name" required>
+                    <label class="Name">Name</label>
+
+                </div><br>
+                <div class="take">
+                    <input type="text" name="UserName" required>
+                    <label class="Username">Username</label>
+
+                </div><br>
+                <div class="take">
+                    <input type="password" name="Password" required>
+                    <label class="Password">Password</label>
+
+                </div><br>
+                <div class="take">
+                    <input type="number" name="RollNo" required>
+                    <label class="Password">Rollno.</label>
+
+                </div><br>
+                <div class="take1">
+                    <input type="checkbox" required>
+                    <label class="terms">I agree to <a href="#" style="color:red">terms of services</a></label>
+                </div><br>
+                <div class="submit">
+                    <input type="submit" value="Sign-up">
+                    <input type="reset" value="Reset">
+                </div>
+            </form>
+
+            <form action="/data" method="POST" class="login" style="margin-top:30px">
+
+
+
+                <div class="take">
+                    <input type="text" name="UserName" required>
+                    <label>Username</label>
+                </div>
+                <br>
+                <div class="take">
+                    <input type="password" name="Password" required>
+                    <label>Password</label>
+                </div>
+                <br>
+                <div class="submit">
+                    input type="checkbox" name="" ></div><br><p>👆️click to receive emails from our site</p><br><br
+
+                    <input type="Submit" value="Login">
+                    <input type="reset" value="Reset">
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title></title>
+</head>
+<body> -->
+    <!-- <h1>
+        This is our index page
+    </h1> -->
+    <!-- </body> -->
+    <!-- <script src="{{url_for('static',filename='js/app.js')}}"></script> -->
+    <!-- </html> -->
+
+
+   
+
+
+
+
+
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Home</h1>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

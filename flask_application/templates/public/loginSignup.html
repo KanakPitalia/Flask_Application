@@ -1,0 +1,101 @@
+{% extends "public/templates/public_template.html" %}
+{% block title %}Login & Signup{% endblock %}
+{% block main %}
+
+<div class="box">
+    <!-- <form action="/data" method="POST"> -->
+    <!-- <form>
+        <input type="radio" name="login" id="login">
+        <input type="radio" name="login" id="sign-up" checked> -->
+    <!-- <div class="labels">
+            <label for='login' id="log">
+                <h1>LOGIN</h1>
+            </label>
+            <label for='sign-up' id="sign">
+                <h1>SIGN-UP</h1>
+            </label>
+
+        </div> -->
+        
+    <div class=""><input type="radio" name="login" id="login" {{ login }}>
+        <input type="radio" name="login" id="sign-up" {{signup}}>
+        <div class="labels">
+            <label for='login' id="log">
+                <h1>LOGIN</h1>
+            </label>
+            <label for='sign-up' id="sign">
+                <h1>SIGN-UP</h1>
+            </label>
+
+        </div>
+        
+        <form action="/sign-up" method="POST" class="sign-up">
+            
+            <div class="take">
+                <input type="text" name="Name" required>
+                <label class="Name">Name</label>
+
+            </div><br>
+            <div class="take">
+                <input type="text" name="UserName" required>
+                <label class="Username">Username</label>
+
+            </div><br>
+            <div class="take">
+                <input type="email" name="Email" required pattern=".+@gmail\.com">
+                <label class="Email">Email(@gmail.com)</label>
+
+            </div><br>
+            <div class="take">
+                <input type="password" name="Password" id="password1" required>
+                <label class="Password">Password</label>
+
+            </div>
+            <input onclick="show1()" type="checkbox" class="btn x" style="display:inline" id="show_h"><label for="show_h">show password         </label> <br>
+            <div class="take1">
+                <input type="checkbox" required>
+                <label class="terms">I agree to <a href="#" style="color:red">terms of services</a></label>
+            </div><br>
+            <div class="submit">
+                <input type="submit" value="Sign-up">
+                <input type="reset" value="Reset">
+            </div>
+            
+        </form>
+
+        <form action="/login" method="POST" class="login" style="margin-top:30px">
+
+
+
+            <div class="take">
+                <input type="text" name="UserName" required>
+                <label>Username</label>
+            </div>
+            <br>
+            <div class="take">
+                <input type="password" name="Password"  id="password" required>
+                <!-- <button onclick="show()" type="button" class="btn"id="show">show</button> -->
+
+                <label>Password</label>
+            </div>
+            <input onclick="show()" type="checkbox" class="btn x" id="show2"><label for="show2">show password</label> <br>
+
+            <div class="submit">
+                <!--input type="checkbox" name="" ></div><br><p>👆️click to receive emails from our site</p><br><br-->
+
+                <input type="Submit" value="Login">
+                <input type="reset" value="Reset">
+            </div>
+
+
+            
+        </form>
+    </div>
+    {% if feedback %}
+            <p class="p-1 bg-danger text-white" style="text-align: center;margin:auto;">{{ feedback }}</p>
+        {% endif %}
+</div>
+
+</div>
+
+{% endblock %}

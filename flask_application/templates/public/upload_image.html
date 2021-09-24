@@ -1,0 +1,34 @@
+{% extends "public/templates/public_template.html" %}
+{% import "macros/input_macros.html" as m %}
+{% block title %}Upload Image{% endblock %}
+{% block main %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Upload Image</h1>
+            <form action="/upload-image" method="post" enctype="multipart/form-data">
+                {{m.file(label="Select Image",id="image",name="image")}}
+                {{m.button(type="submit",value="Upload")}}
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#image').on('change',function(){
+        //get the file name
+        var fileName = $(this).val().replace('C:\\fakepath\\', "");
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(fileName);
+    })
+</script>
+{% endblock %}
