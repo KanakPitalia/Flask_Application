@@ -41,7 +41,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/admin/dashboard">Admin</a>
         </li>
-        {% if session %}
+        {% if session['USERNAME']%}
         <li class="nav-item">
           <a class="nav-link" href="{{url_for('signout')}}">Logout</a>
         </li>
@@ -55,9 +55,12 @@
     </div>
 
   </nav>
+  
 
   <main>
+    
     {% block main %}{% endblock %}
+    
   </main>
 
   <!-- Import jquery 3.3.1 slim min -->

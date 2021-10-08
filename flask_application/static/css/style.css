@@ -1,8 +1,9 @@
 body {
-    background: url(/static/img/4.jpg);
-    background-size: auto;
+    background: url(/static/img/4.jpg)!important;
+    background-size: auto !important;
     height:900px;
 }
+
 .sign-up,
 .login {
     position: absolute;
@@ -21,7 +22,7 @@ h1{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 650px;
+    height: 700px;
     opacity: 100%;
     padding: 30px;
     box-sizing: border-box;
@@ -57,6 +58,9 @@ h1{
     background: transparent;
     border-bottom: 2px solid darkblue;
 
+}
+.box .take input:-webkit-autofill {
+    background-color:transparent !important;
 }
 
 .box .take label {
@@ -155,13 +159,51 @@ div input[id="login"]:checked~form.login,
 div input[id="sign-up"]:checked~form.sign-up {
     z-index: 10000000;
     /* overflow: hidden; */
-    top: 150px;
+    top: 170px;
     transition: .5s;
     /* animation: typingAnim 5s steps(50); */
 }
 .x{
     /* z-index:1; */
     /* opacity:100%; */
+    /* border:none; */
+    /* width:0%; */
+    /* margin-left:15px; */
+    margin-left:25px;
     border:none;
-    opacity:0%;
+    outline:transparent;
+    /* box-shadow: 0px 0px 0px transparent; */
+    background:transparent;
+    cursor:pointer;
+    color:darkgray;
+}
+
+.x:hover{
+    text-decoration: underline;
+    color:black;
+}
+.x:focus{
+    outline:0;
+}
+.kill{
+    background: transparent;
+    border:none;
+    cursor:pointer;
+    margin:auto;
+    font-size: 120%;
+}
+.kill:focus{
+    outline:none;
+}
+/* .show_p{
+    cursor:pointer;
+    width:fit-content;
+    border:5px solid black;
+} */
+input:-webkit-autofill{
+     transition: background-color 500s;
+    -webkit-text-fill-color:yellow;
+}
+#kill{
+    float: right;
 }

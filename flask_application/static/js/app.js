@@ -1,20 +1,32 @@
-function show() {
-    var check = document.getElementById("show2");
-    var text = document.getElementById("password")
-    if (check.checked == true){
-         text.type = "text";
+function show(target) {
+    var tag = document.getElementById(target);
+    // var check = document.getElementById(tag);
+    var link = document.getElementById("showhide");
+    if (link.innerHTML == "show password"){
+        tag.type = "text";
+        link.innerHTML = "hide password";
     }
     else {
-        text.type = "password";
+        tag.type = "password";
+        link.innerHTML = "show password";
+
     }
 }
-function show1() {
-    var check = document.getElementById("show_h");
-    var text = document.getElementById("password1")
-    if (check.checked == true){
-         text.type = "text";
+function show1(target) {
+    var tag = document.getElementById(target);
+    // var check = document.getElementById(tag);
+    var link = document.getElementById("showhide1");
+    if (link.innerHTML == "show password"){
+        tag.type = "text";
+        link.innerHTML = "hide password";
     }
     else {
-        text.type = "password";
+        tag.type = "password";
+        link.innerHTML = "show password";
+        
     }
+}
+function Close(target) {
+    var tag = document.getElementById(target);
+    tag.style.display = "none";
 }

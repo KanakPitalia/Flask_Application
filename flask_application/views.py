@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, jsonify, make_response, send_from_directory, abort,session,url_for
+from flask import render_template, request, redirect, jsonify, make_response, send_from_directory, abort,session,url_for,flash
 from flask_application import app
 from datetime import datetime
 import os
@@ -108,7 +108,7 @@ def profile():
         session["USERNAME"]=users[0][1]
         print("session username set")
         print(session)
-        return render_template("public/profile.html",name=users[0][0],userName=users[0][1],email=users[0][2],session=1)
+        return render_template("public/profile.html",name=users[0][0],userName=users[0][1],email=users[0][2])
     else:
         print("No username found in session")
         return redirect(url_for("login"))
@@ -231,13 +231,17 @@ def login():
                 print(ide)
                 if ide==(1,1):
                     session["USERNAME"]=username
-                    return redirect(url_for('profile'))
+                    return redirect(url_for('profile',))
                 elif ide==(1,0):
-                    feedback="Password is incorrect!"
-                    return render_template("public/loginSignup.html",feedback=feedback,login=checked,signup=unchecked)
+                    flash("Password is incorrect!","danger")
+                    # feedback = "Password is incorrect!"
+                    print(session)
+                    return render_template("public/loginSignup.html",login=checked,signup=unchecked)
                 else:
-                    feedback = 'You\'re not the user,sign-up first'
-                    return render_template("/public/loginSignup.html",login=unchecked,signup=checked,feedback=feedback)
+                    flash('You\'re not the user,sign-up first',"danger")
+                    # feedback = 'You\'re not the user,sign-up first'
+                    print(session)
+                    return render_template("/public/loginSignup.html",login=unchecked,signup=checked)
         # return redirect(render_template("public/loginsignup.html",login=checked,signup=unchecked)
             # else:
             #     cur.execute("CREATE TABLE profiles(Name VARCHAR(50) NOT NULL,Username VARCHAR(50) NOT NULL,Email VARCHAR(50) NOT NULL,Password VARCHAR(50) NOT NULL,PRIMARY KEY (Username));")
@@ -259,15 +263,22 @@ def check(username, password):
 @app.route("/sign-out")
 def signout():
     session.pop("USERNAME",None)
+    print(session)
     return redirect(url_for("login"))
 
 @app.route("/sign-up",methods=["GET","POST"])
 def signup():
+    checked="checked"
+    unchecked="unchecked"
     if request.method=="POST":
         username=request.form.get("UserName")
         name=request.form.get("Name")
         email=request.form.get("Email")
         password=request.form.get("Password")
+        if not len(password)>=10:
+            flash("Password must be of atleast 10 characters","warning")
+            print(session)
+            return render_template("/public/loginSignup.html",login=unchecked,signup=checked)
         print(f"Username = {username},Password = {password},Email = {email},Name = {name}")
         containsDatabase = cur.execute(f"show databases LIKE '{app.config['''DB_NAME''']}'")
         print(containsDatabase)
@@ -277,6 +288,8 @@ def signup():
             print("Tables =",containsTable)
             if containsTable:
                 adduser(name,username,email,password)
+                flash("Account created!","success")
+                print(session)
                 return redirect(url_for("login"))
             else:
                 cur.execute("CREATE TABLE profiles(Name VARCHAR(50) NOT NULL,Username VARCHAR(50) NOT NULL,Email VARCHAR(50) NOT NULL,Password VARCHAR(50) NOT NULL,PRIMARY KEY (Username));")
