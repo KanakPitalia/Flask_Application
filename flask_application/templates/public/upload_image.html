@@ -9,7 +9,7 @@
         <div class="col">
             <h1>Upload Image</h1>
             <form action="/upload-image" method="post" enctype="multipart/form-data">
-                {{m.file(label="Select Image",id="image",name="image")}}
+                {{m.fileMultiple(label="Select Image",id="image",name="image")}}
                 {{m.button(type="submit",value="Upload")}}
                 
             </form>

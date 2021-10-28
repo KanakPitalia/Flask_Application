@@ -1,4 +1,8 @@
 from flask import render_template, request, redirect, jsonify, make_response, send_from_directory, abort,session,url_for,flash
+# import sys
+# print(sys.path)
+# import ipdb
+# ipdb.set_trace()
 from flask_application import app
 from datetime import datetime
 import os
@@ -99,6 +103,8 @@ def jinja():
 
 @app.route("/profile")
 def profile():
+
+       
     if not session.get("USERNAME") is None:
         username = session.get("USERNAME")
         cur.execute(f"use {app.config['DB_NAME']}")
@@ -158,20 +164,24 @@ def query():
 def upload_image():
     if request.method == "POST":
         if request.files:
-            image = request.files["image"]
-            if image.filename == "":
-                print("No Filename")
-                return redirect(request.url)
-            else:
-                if allowed_image(image.filename):
+            images = request.files.getlist("image")
+            for image in images:
 
-                    image.save(os.path.join(
-                        app.config["IMAGE_UPLOADS"], image.filename))
-                    print("Image Saved")
+                if image.filename == "":
+                    print("No Filename")
                     return redirect(request.url)
                 else:
-                    print("That file extension is not allowed")
-                    return redirect(request.url)
+                    if allowed_image(image.filename):
+
+                        image.save(os.path.join(
+                            app.config["IMAGE_UPLOADS"], image.filename))
+                        print("Image Saved",image.filename)
+                    else:
+                        print("That file extension is not allowed")
+                        break
+                        return redirect(request.url)
+            return redirect(request.url)
+            
     return render_template("public/upload_image.html")
 
 
@@ -266,7 +276,7 @@ def signout():
     print(session)
     return redirect(url_for("login"))
 
-@app.route("/sign-up",methods=["GET","POST"])
+@app.route("/sign-up",methods=["POST"])
 def signup():
     checked="checked"
     unchecked="unchecked"
@@ -307,3 +317,15 @@ def adduser(name,username,email,password):
     cur.execute(f'''INSERT INTO profiles VALUES("{name}","{username}","{email}","{password}");''')
     connect.commit()
     return 0
+
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     app.logger.info(f"Page Not Found :{request.url}")
+#     return f"Hello guys :{e}",404
+
+@app.errorhandler(500)
+def server_error(e):
+    # email_admin(message = "Server error",url=request.url,error=e)
+    app.logger.error("Server is not working properly")
+    return f"Sorry for the inconvenient cause! \n {e}",500
+

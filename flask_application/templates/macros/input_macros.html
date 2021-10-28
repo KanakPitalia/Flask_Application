@@ -14,11 +14,19 @@
 {% macro button(value="",id="",onclick="#",type="button") -%}
 <button class="btn btn-dark" id="{{id}}" onclick="{{onclick}}" type="{{type}}">{{value}}</button>
 {%- endmacro %}
-{% macro file(type="file",id="",name="",label="") -%}
+{% macro fileSingle(type="file",id="",name="",label="") -%}
 
 <div class="form-group">
 <label for="{{id}}" >{{label}}</label>
 <div class="custom-file">
 <input type="file" name="{{name}}" id="{{id}}" class="custom-file-input" >
+<label for="{{id}}" class = "custom-file-label">select {{name}} ...</label></div></div>
+{%- endmacro %}
+{% macro fileMultiple(type="file",id="",name="",label="") -%}
+
+<div class="form-group">
+<label for="{{id}}" >{{label}}</label>
+<div class="custom-file">
+<input type="file" name="{{name}}" id="{{id}}" class="custom-file-input" multiple>
 <label for="{{id}}" class = "custom-file-label">select {{name}} ...</label></div></div>
 {%- endmacro %}
